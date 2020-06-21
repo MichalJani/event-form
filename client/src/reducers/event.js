@@ -16,4 +16,4 @@ export const event = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
