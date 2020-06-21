@@ -30,14 +30,14 @@ export const AlertBar = ({ alerts }) => {
           severity={alert.alertType}
           className={classes.alert}
           elevation={0}
-          variant="filled"
+          variant='filled'
         >
           {alert.msg}
         </MuiAlert>
-      </Snackbar >
+      </Snackbar>
     ))
-  )
-}
+  );
+};
 
 AlertBar.propTypes = {
   alerts: PropTypes.array.isRequired

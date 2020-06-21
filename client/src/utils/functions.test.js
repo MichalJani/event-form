@@ -31,21 +31,21 @@ describe('validateText validation', () => {
 
   it('Should pass text of length 1', () => {
     const value = 'm';
-    const errors = validateText(name, value)
+    const errors = validateText(name, value);
 
     expect(errors[name]).toBeFalsy();
   });
 
   it('Should fail text of length 0', () => {
     const value = '';
-    const errors = validateText(name, value)
+    const errors = validateText(name, value);
 
     expect(errors[name]).toBeTruthy();
   });
 
   it('Should fail text of length 41', () => {
     const value = 'fourtyonecharaceterslengthfourtyonecharac';
-    const errors = validateText(name, value)
+    const errors = validateText(name, value);
 
     expect(errors[name]).toBeTruthy();
   });

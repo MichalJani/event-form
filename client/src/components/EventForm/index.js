@@ -3,6 +3,6 @@ import { EventForm } from './EventForm';
 import { setAlert } from '../../actions/alert';
 import { addEvent } from '../../actions/event';
 
-export const EventFormConnected = connect(
-  null, { setAlert, addEvent }
-)(EventForm);
+export const EventFormConnected = connect(null, { setAlert, addEvent })(
+  EventForm
+);

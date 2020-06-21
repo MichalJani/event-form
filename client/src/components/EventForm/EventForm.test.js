@@ -1,7 +1,7 @@
-import React from 'react'
-import { mount } from 'enzyme'
+import React from 'react';
+import { mount } from 'enzyme';
 
-import { EventForm } from './EventForm'
+import { EventForm } from './EventForm';
 
 describe('EventForm', () => {
   const mockSetAlert = jest.fn();
@@ -9,17 +9,18 @@ describe('EventForm', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<EventForm addEvent={mockAddEvent} setAlert={mockSetAlert} />)
+    wrapper = mount(
+      <EventForm addEvent={mockAddEvent} setAlert={mockSetAlert} />
+    );
   });
 
   afterEach(() => {
     wrapper.unmount();
   });
 
-  it('Should render without crashing',
-    () => {
-      expect(wrapper).toBeTruthy()
-    })
+  it('Should render without crashing', () => {
+    expect(wrapper).toBeTruthy();
+  });
 
   it('Should have a First Name field', () => {
     expect(wrapper.find('input[name="firstName"]').length).toEqual(1);
@@ -43,6 +44,6 @@ describe('EventForm', () => {
 
   it('Should call addEvent on submit button click', () => {
     wrapper.find('button[type="submit"]').simulate('click');
-    expect(mockAddEvent).toHaveBeenCalled()
+    expect(mockAddEvent).toHaveBeenCalled();
   });
 });

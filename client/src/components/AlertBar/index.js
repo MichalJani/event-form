@@ -5,6 +5,4 @@ const mapStateToProps = state => ({
   alerts: state.alert
 });
 
-export const AlertBarConnected = connect(
-  mapStateToProps
-)(AlertBar)
+export const AlertBarConnected = connect(mapStateToProps)(AlertBar);

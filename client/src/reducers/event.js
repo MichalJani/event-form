@@ -7,7 +7,7 @@ const initialState = {
 export const event = (state = initialState, action) => {
   const { type, payload } = action;
 
-  switch(type) {
+  switch (type) {
     case ADD_EVENT:
       return {
         ...state,

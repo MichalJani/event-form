@@ -9,7 +9,7 @@ import { EventFormConnected } from '../EventForm';
 const useStyles = makeStyles(() => ({
   app: {
     paddingTop: '100px'
-  },
+  }
 }));
 
 export const App = () => {
@@ -23,5 +23,4 @@ export const App = () => {
       </div>
     </Provider>
   );
-}
-
+};
