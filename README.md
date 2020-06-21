@@ -11,3 +11,13 @@ The database is set to use default url `mongodb://localhost:27017`.
 ### To start front-end only run `npm run client`
 
 ### To start back-end only run `npm run server`
+
+### TESTS
+
+## To run all tests run `npm test`
+
+## To run tests on the front-end run `npm run test-client`
+
+## To see front-end test coverage `npm run test-client:coverage`
+
+## To run tests on the back-end run `npm run test-server`

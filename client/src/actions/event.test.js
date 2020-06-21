@@ -38,7 +38,7 @@ describe('addEvent request', () => {
       moxios.wait(() => {
         const request = moxios.requests.mostRecent();
         request.respondWith({
-          status: 200,
+          status: 201,
           event: testEvent
         });
       });
