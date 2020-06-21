@@ -1,9 +1,6 @@
 import { api } from '../utils/api';
 import { setAlert } from './alert';
-import {
-  ADD_EVENT,
-  ADD_EVENT_ERROR
-} from './types';
+import { ADD_EVENT } from './types';
 import {
   SUCCESS,
   ERROR
@@ -25,10 +22,5 @@ export const addEvent = formData => async dispatch => {
     if(errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, ERROR)));
     }
-
-    dispatch({
-      type: ADD_EVENT_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
   }
 };

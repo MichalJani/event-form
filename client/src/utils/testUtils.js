@@ -23,6 +23,5 @@ export const testEvent = {
 }
 
 export const testInitialEvent = {
-  event: null,
-  error: {}
+  event: null
 }

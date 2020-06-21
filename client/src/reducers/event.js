@@ -1,11 +1,7 @@
-import {
-  ADD_EVENT,
-  ADD_EVENT_ERROR
-} from '../actions/types';
+import { ADD_EVENT } from '../actions/types';
 
 const initialState = {
-  event: null,
-  error: {}
+  event: null
 };
 
 export const event = (state = initialState, action) => {
@@ -16,11 +12,6 @@ export const event = (state = initialState, action) => {
       return {
         ...state,
         event: payload
-      };
-    case ADD_EVENT_ERROR:
-      return {
-        ...state,
-        error: payload
       };
     default:
       return state;

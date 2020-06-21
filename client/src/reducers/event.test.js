@@ -12,8 +12,7 @@ describe('Event Reducer', () => {
 
   it('Should return new state if receiving type', () => {
     const expectedState = {
-      event: testEvent,
-      error: {}
+      event: testEvent
     }
     const newState = event(undefined, {
       type: ADD_EVENT,
