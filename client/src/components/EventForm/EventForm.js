@@ -5,7 +5,6 @@ import {
   Grid,
   Container
 } from '@material-ui/core';
-import { isDate } from 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -18,7 +17,10 @@ import {
   initialFormData,
   initialErrors
 } from '../../utils/fixtures';
-import { isEmailValid } from '../../utils/functions';
+import {
+  validateText,
+  validateDate
+} from '../../utils/functions';
 
 const useStyles = makeStyles(() => ({
   eventForm: {
@@ -40,17 +42,12 @@ export const EventForm = ({ addEvent, setAlert }) => {
   const { firstName, lastName, email, date } = formData;
 
   const handleDateChange = (date) => {
-    validateDate(date)
+    validateDateField(date)
     setFormData({ ...formData, date: date });
   };
 
-  const validateDate = (date) => {
-    const errors = {}
-    if(!isDate(date)) {
-      errors.date = "Please select a valid date";
-    } else {
-      errors.date = '';
-    }
+  const validateDateField = (date) => {
+    const errors = validateDate(date);
 
     setFormErrors({ ...formErrors, date: errors.date })
   }
@@ -81,30 +78,10 @@ export const EventForm = ({ addEvent, setAlert }) => {
     return firstName === '' && lastName === '' && email === '' && date === ''
   }
 
-
   const validateField = e => {
     e.preventDefault();
     const { name, value } = e.target;
-    const errors = { ...formErrors };
-    const trimmedValue = value.trim()
-
-    if(name === 'firstName' || name === 'lastName') {
-      if(trimmedValue.length < 1) {
-        errors[name] = "Minimum 1 characters required";
-      } else if(trimmedValue.length > 40) {
-        errors[name] = "Maximum 40 characters allowed";
-      } else {
-        errors[name] = '';
-      }
-    }
-
-    if(name === 'email') {
-      if(!isEmailValid(trimmedValue)) {
-        errors.email = "Please input valid email";
-      } else {
-        errors.email = '';
-      }
-    }
+    const errors = validateText(name, value)
 
     setFormErrors({ ...formErrors, [name]: errors[name] })
   };
@@ -112,7 +89,6 @@ export const EventForm = ({ addEvent, setAlert }) => {
   return (
     <form
       className={classes.eventForm}
-
       autoComplete="off"
     >
       <Container
@@ -122,8 +98,7 @@ export const EventForm = ({ addEvent, setAlert }) => {
           container
           alignContent='center'
           spacing={3}>
-          <Grid item xs={12}
-          >
+          <Grid item xs={12} >
             <div>First Name</div>
             <TextField
               helperText={formErrors.firstName}
@@ -134,6 +109,7 @@ export const EventForm = ({ addEvent, setAlert }) => {
               variant="standard"
               margin="normal"
               name='firstName'
+              data-testid='firstName'
               fullWidth
               required
             />
@@ -145,10 +121,11 @@ export const EventForm = ({ addEvent, setAlert }) => {
               helperText={formErrors.lastName}
               value={lastName}
               onChange={handleChange}
-              // onBlur={validateField}
+              onBlur={validateField}
               margin="normal"
               variant="standard"
               name='lastName'
+              data-testid='lastName'
               fullWidth
               required
             />
@@ -160,10 +137,11 @@ export const EventForm = ({ addEvent, setAlert }) => {
               helperText={formErrors.email}
               value={email}
               onChange={handleChange}
-              // onBlur={validateField}
+              onBlur={validateField}
               name='email'
               variant="standard"
               margin="normal"
+              data-testid='email'
               fullWidth
               required
             />

@@ -46,5 +46,3 @@ describe('EventForm', () => {
     expect(mockAddEvent).toHaveBeenCalled()
   });
 });
-
-
