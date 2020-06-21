@@ -1,3 +1,7 @@
+# Simple event form with tests
+
+### To install the dependencies run `npm install && cd client && npm install`, then go back to the main dir by running `cd ..`
+
 ### To start the project run `npm run dev`
 
 Runs the app in the development mode.<br />
@@ -12,12 +16,12 @@ The database is set to use default url `mongodb://localhost:27017`.
 
 ### To start back-end only run `npm run server`
 
-### TESTS
+# TESTS
 
-## To run all tests run `npm test`
+### To start all tests run `npm test`
 
-## To run tests on the front-end run `npm run test-client`
+### To start tests on the front-end run `npm run test-client`
 
-## To see front-end test coverage `npm run test-client:coverage`
+### To see front-end test coverage `npm run test-client:coverage`
 
-## To run tests on the back-end run `npm run test-server`
+### To start tests on the back-end run `npm run test-server`
