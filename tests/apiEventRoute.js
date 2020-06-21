@@ -1,17 +1,22 @@
-const chai = require("chai");
-const chaiHttp = require("chai-http");
+const chai = require('chai');
+const chaiHttp = require('chai-http');
 
 const app = require('../server');
-const { testEvent, testEventIncomplete, testEventInvalid } = require('../testUtils/fixtures')
+const {
+  testEvent,
+  testEventIncomplete,
+  testEventInvalid
+} = require('../testUtils/fixtures');
 
 chai.use(chaiHttp);
 chai.should();
 
-const apiEventRoute = '/api/event'
+const apiEventRoute = '/api/event';
 
-describe("POST /api/event", () => {
-  it("Should save a valid event", (done) => {
-    chai.request(app)
+describe('POST /api/event', () => {
+  it('Should save a valid event', done => {
+    chai
+      .request(app)
       .post(apiEventRoute)
       .send(testEvent)
       .end((err, res) => {
@@ -22,13 +27,14 @@ describe("POST /api/event", () => {
         res.body.event.should.have.property('lastName');
         res.body.event.should.have.property('email');
         res.body.event.should.have.property('date');
-        res.body.event.should.have.property('_id')
+        res.body.event.should.have.property('_id');
         done();
       });
   });
 
-  it("Should respond with errors on missing values", (done) => {
-    chai.request(app)
+  it('Should respond with errors on missing values', done => {
+    chai
+      .request(app)
       .post(apiEventRoute)
       .send(testEventIncomplete)
       .end((err, res) => {
@@ -43,8 +49,9 @@ describe("POST /api/event", () => {
       });
   });
 
-  it("Should respond with errors on invalid email and date", (done) => {
-    chai.request(app)
+  it('Should respond with errors on invalid email and date', done => {
+    chai
+      .request(app)
       .post(apiEventRoute)
       .send(testEventInvalid)
       .end((err, res) => {
@@ -57,4 +64,3 @@ describe("POST /api/event", () => {
       });
   });
 });
-

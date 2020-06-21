@@ -5,17 +5,15 @@ const testEvent = new Event({
   lastName: 'Surname',
   email: 'example@email.com',
   date: new Date()
-})
+});
 
-const testEventIncomplete = new Event({})
+const testEventIncomplete = new Event({});
 
 const testEventInvalid = new Event({
   firstName: 'Name',
   lastName: 'Surname',
   email: 'exampleemail.com',
   date: '23.04.2028'
-})
+});
 
-module.exports = { testEvent, testEventIncomplete, testEventInvalid }
-
-
+module.exports = { testEvent, testEventIncomplete, testEventInvalid };
