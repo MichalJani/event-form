@@ -46,4 +46,18 @@ describe('EventForm', () => {
     wrapper.find('button[type="submit"]').simulate('click');
     expect(mockAddEvent).toHaveBeenCalled();
   });
+
+  // Why doesn't it work???
+  it('should set the password value on change event with trim', async () => {
+    wrapper.find('input[name="firstName"]').simulate('change', {
+      target: {
+        value: 'somenewfirstName',
+      },
+    });
+
+    console.log(wrapper.find('input[name="firstName"]').debug())
+    expect(wrapper.find('input[name="firstName"]').prop('value')).toEqual(
+      'somenewfirstName',
+    )
+  });
 });
